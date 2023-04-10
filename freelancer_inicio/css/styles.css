@@ -1,0 +1,327 @@
+:root { /* Es un pseudo selector, un elemento que no existe realmente dentro de html*/
+   
+    /* Variables de paleta de colores*/
+    --blanco: #ffffff; /* Se define el color blanco*/
+    --oscuro: #212121; 
+    --primario: #ffc107;
+    --secundario: #0097a7;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+
+    /*Variables de fuente*/
+    --fuente-principal: 3.8rem;
+}
+
+html{
+    font-size: 62.5%; /* Reinicia el tamaño del html */
+    box-sizing: border-box; /* Hack para Box Model */
+    scroll-snap-type: y mandatory;
+}
+
+/*Scroll snap*/
+.servicios,
+.navegacion-principal,
+.formulario{
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+
+body{
+    font-size: 16px; /* Hace que el hack para usar rem funcione. 1 rem = 10px */
+    font-family: 'Krub', sans-serif;
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%); /*Degradado de fondo*/
+}
+
+.contenedor {
+    max-width: 120rem; /*Ancho hacia los lados y con el max toma eso como maximo solo si hay ese espacio disponible si no toma el 100% que hay*/
+
+    /*Margen (espacio hacia afuera) usando 4 parametros. Arriba, derecha, abajo e izquierda*/
+    margin: 0 auto 0 auto; /*Incluso se puede simplificar más ya que css asume que se repiten los dos primeros valores si no se ponen. margin: 0 auto;*/
+
+    /* También se puede hacer de esta forma*/
+    /*margin-top: 0; /*margen de arriba*/
+    /*margin-right: auto;/*margen de la derecha*/
+    /*margin-bottom: 0;/*margen de abajo*/
+    /*margin-left: auto;/*margen de la izquierda*/
+    
+}
+
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+
+@media (min-width: 768px) { /*Para dispositivos pequeños cambia el ancho del boton a auto*/
+    .boton{
+        width: auto; /*Como que reinicia el boton*/
+    }
+}
+
+.boton:hover{
+    cursor: pointer;
+}
+
+.sombra { /*Los navegadores usan Prefijos de proveedor como webkit, moz, o y ms*/
+    
+    /*Estos prefijos no son necesarios ya que la propiedad box-shadow tiene un soporte del 95% global sin prefijo  */
+
+    /* -webkit-box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.48); /*Web kit es de chrome*/
+    /* -moz-box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.48); Moz es de Firefox */
+
+    box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.48);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+
+h1{
+    font-size: 3.8rem;
+}
+h2{
+    font-size: 2.8rem;
+}
+h3{
+    font-size: 1.8rem;
+}
+
+h1,h2,h3{
+    text-align: center;
+}
+
+.titulo { /* Es un selector de clase, algo asi como una variable */
+    text-align: center;
+    font-size: 3.8rem; /* Es igual a 38 px. también se puede definir con variables font-size: var(--fuente-principal);*/ 
+    /*color: var(--primario); /* Estamos usando una variable de un pseudo selector*/
+    /*font-family: Arial, Helvetica, sans-serif; /*Agrega 3 opciones en dado caso que no cuente con alguna de esas fuentes*/
+}
+
+.titulo span{ 
+    font-size: 2rem; /* Es igual a 20px */
+}
+
+/*Utilidades*/
+
+.w-sm-100{
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .w-sm-100 {
+        width: auto;
+    }
+}
+
+.flex{
+    display: flex;
+}
+
+.alinear-derecha{
+    justify-content: flex-end;
+}
+
+
+
+
+.nav-bg { /*Como este nav envuelve a la navegación principal le pone el color de fondo a todo lo largo*/
+    background-color: var(--secundario);
+}
+
+.navegacion-principal {
+    display: flex; /*Habilita flexbox que nos da más posibilidades como la siguiente...*/
+    flex-direction: column; /*esta por default rowm, se puede cambiar por otras cosas como row o column-reverse*/
+}
+
+@media (min-width: 768px) {
+    .navegacion-principal {
+        flex-direction: row; /*Este está por defecto pero en este caso hace el cambio de column a row*/
+        justify-content: space-between; /*Permite ajustar el contenido de manera horizontal*/
+    }
+}
+
+.navegacion-principal a {
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none; /*Quita la linea de abajo del enlace*/
+    font-size: 2rem;
+    font-weight: 700; /*también puede ser bold, sería lo mismo. los headings utilizan un font-weight de 700 mientras que parrafos y enlaces 400. */
+    padding: 1rem; /*  Es (relleno del objeto) Cuando esta un valor es como si estuviera 4 veces, arriba, derecha, abajo e izquierda*/
+}
+
+.navegacion-principal a:hover{
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+/*@media (min-width:480px) {
+    body {
+        background-color: blue;
+    }
+}*/ /*Este es un ejemplo de como usar media queries que se aplica al body segun la condición de un ancho minimo de pantalla de 480px*/
+
+.hero{
+    background-image: url(../img/hero.jpg); /*Busca la imagen y la pone en la clase de la sección*/
+    background-repeat: no-repeat; /*Por default se repiten las imagenes al agrandar y eso lo cancela*/
+    background-size: cover; /*Hace que la imagen se expanda hasta cubrir*/
+    height: 450px;
+
+    position: relative; /* Esto se pone en la clase padre para que el contenido en la clase hijo pueda acomodarse bien con el absolute*/
+    margin-bottom: 2rem;
+}
+.contenido-hero{
+
+    position: absolute; /* El relative en el padre hace que tome las coordenadas de ese elemento y el absolute lo localiza dentro de ese elemento */
+    /*
+    background-color: red;
+    width: 2rem;
+    height: 2rem;
+
+    top: 0; /*Esto es para la parte de arriba, para que este abajo se pone bottom
+    left: 0; /*Esto es para la posición derecha, para que este a la derecha se pone right
+    */
+
+    background-color: rgb(0 0 0 / 55%) ;
+    width: 100%;    
+    height: 100%;
+
+    /*Con este codigo se alinea tanto vertical como horizontalmente los elementos*/
+    display: flex; /*Se coloca de izquierda a derecha los elementos por default pero se puede cambiar en columna con el siguiente comando*/
+    flex-direction: column; /*para ordenar de arriba hacia abajo, por default con el row se ordena con justify-content pero en este caso que es columna se utiliza el siguiente comando*/
+    align-items: center;
+    justify-content: center;
+
+}
+
+.contenido-hero h2,
+.contenido-hero p{
+    color: var(--blanco);
+}
+
+
+.ubicacion{
+    display: flex; /*Alinea de forma horizontal*/
+    align-items: flex-end; /*Alinea verticalmente hacia abajo*/
+}
+
+
+
+/*Servicios*/
+@media (min-width: 768px) {
+    .servicios{
+        display: grid; /*agrega propiedades de grid, parecido a flexbox. ambos son buenos pero hay que saber cuando es más facil usar uno que otro*/
+        grid-template-columns: 1fr 1fr 1fr; /*O puede ser 33.3% 33.3% 33.3%, solo que esto divide en fracciones y es más facil*/
+        column-gap: 1rem;
+    
+    }
+}
+
+.servicio {
+    display: flex; /*Por defecto se ordena horizontal*/
+    flex-direction: column; /*Esto hace que cambie a verticalmente*/
+    align-items: center; /*Se usa align para alinear verticalmente en vez de justify-content que ese sirve para alinear horizontalmente*/
+}
+
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: bold;
+}
+
+.servicio p {
+    line-height: 2; /*Hace un interlineado para hacerlo más fácil de leer*/
+    text-align: center;
+}
+
+.servicio .iconos {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    /*Alinear horizontal y verticalmente*/
+    display: flex;
+    justify-content: space-evenly; /*Alinea horizontalmente*/
+    align-items: center; /*Alinea verticalmente*/
+}
+
+/*Contacto*/
+.formulario{
+    background-color: var(--gris);
+    width: min(60rem,100%); /*Utiliza el valor más pequeño*/
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset{
+    border: none;
+}
+
+.formulario legend{
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+
+/*Grid*/
+@media (min-width: 768px) {
+    .contenedor-campos{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem; /* Separa las columnas*/
+    }
+
+    .campo:nth-child(3),
+    .campo:nth-child(4){ /*Selecciona el tercer div (sin comenzar en 0)*/
+        grid-column: 1 / 3; /*Manda el campo correo extenderse de 1 a 3 en el grid, se puede ver con firefox developer edition en la disposición*/
+    }
+
+}
+
+
+
+.campo{
+    margin-bottom: 1rem;
+}
+
+.campo label{
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.campo textarea{
+    height: 20rem;
+}
+
+.input-text{
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+.footer{
+    text-align: center;
+}
+
